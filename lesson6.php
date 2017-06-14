@@ -131,3 +131,14 @@ function perimetr($a,$b) {
     $p = perimetr($a, $b);
     echo $p;
 //Рекурсивная функция
+echo "<hr>";
+ $array = array(
+     'Автотехника' => array(
+         'Вело' => array(
+             'Велосипеды' => array(
+                 '(товар) Extreme' =>10,
+                 '(товар) Author' =>4,
+             ),
+         )
+     )
+ )

@@ -133,12 +133,85 @@ function perimetr($a,$b) {
 //Рекурсивная функция
 echo "<hr>";
  $array = array(
-     'Автотехника' => array(
-         'Вело' => array(
-             'Велосипеды' => array(
-                 '(товар) Extreme' =>10,
-                 '(товар) Author' =>4,
+     'Автотехника' => array( //1
+         'Вело' => array( //2
+             'Велосипеды' => array( //3
+                 '(товар) Extreme' =>10, //4
+                 '(товар) Author' =>4, //4
              ),
-         )
-     )
- )
+             'Самокаты' => 12, //3
+         ),
+        'Авто' => array( //2
+            'Opel' => array( //3
+                '(товар) Vivaro' => 5, //4
+            ),
+            '(товар) Honda' => 10, //3
+            '(товар) Audi' => 11, //3
+),
+        '(товар) Аксесуары' => 7, //2
+     ),
+
+    'Фототехника' => array( //1
+        '(товар) фотокамеры' => 6, //2
+        '(товар) видеокамеры' => 3, //2
+),
+
+    '(товар) Другое' => 3, //1
+ );
+
+// $s = 0;
+//
+//foreach ($array as $level1) {
+//    if (is_array($level1)) {
+//        foreach ($level1 as $level2) {
+//            if (is_array($level2)){
+//                foreach ($level2 as $level3) {
+//                    if (is_array($level3)) {
+//                        foreach ($level3 as $level4) {
+//                            if (is_array($level4)) {
+//                                echo '<pre>';
+//                                print_r($level4);
+//                                echo '</pre>';
+//                            } else {
+//                                $s += $level4;
+//                            }
+//                        }
+//                    } else {
+//                        $s += $level3;
+//                    }
+//                }
+//                }else{
+//                $s += $level2;
+//            }
+//        }
+//    } else {
+//        $s += $level1;
+//    }
+//}
+//
+//echo '<hr>' . $s;
+
+//echo '<pre/>';
+// var_dump(is_array($array));
+
+function sum($array, $level = 0) { // Лучше разобраться как работает эта функция !!!
+
+    static $count;
+    static $items;
+
+//    var_dump($level);
+    if (is_array($array)) {
+        $level++;
+        foreach ($array as $element){
+            sum($element, $level);
+        }
+    } else {
+        $count++;
+        $items +=$array;
+
+    }
+    return array('count' =>$count, 'items' =>$items);
+}
+
+$result = sum($array);
+print_r($result);
